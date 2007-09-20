@@ -47,7 +47,7 @@ public class Config
 
   /**
    * Gibt die Singleton-Instanz dieser Klasse zurueck. 
-   * Sie speichert Programm-weite Einstellungen. Für Workspace-Einstellungen bitte
+   * Sie speichert Programm-weite Einstellungen. Fuer Workspace-Einstellungen bitte
    * Workspace.getConfig() verwenden.
    * @return Singleton-Instanz dieser Klasse.
    */

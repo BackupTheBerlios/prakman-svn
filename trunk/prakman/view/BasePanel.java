@@ -41,7 +41,7 @@ public abstract class BasePanel
   public abstract int getID();
   
   /**
-   * Gibt den zu speichernden Inhalt des TabbedPane zurück.
+   * Gibt den zu speichernden Inhalt des TabbedPane zurueck.
    * @return
    */
   public abstract Saveable getSaveable();

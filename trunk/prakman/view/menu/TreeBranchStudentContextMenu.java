@@ -58,7 +58,7 @@ public class TreeBranchStudentContextMenu extends TreeBranchContextMenu
       catch(Exception e)
       {
         String[] msgA = 
-        {"Bitte geben Sie eine dezimale ZAHL ein!"};
+          {"Bitte geben Sie eine dezimale ZAHL ein!"};
         JOptionPane.showMessageDialog(null, msgA, "Neuer Student", JOptionPane.WARNING_MESSAGE);
         addClicked();
         return;
@@ -67,8 +67,8 @@ public class TreeBranchStudentContextMenu extends TreeBranchContextMenu
       if(matNr < 0)
       {
         String[] msgA = 
-        {"Eine negative Matrikelnummer ist nicht zulässig!",
-          "Bitte wählen Sie eine andere Matrikelnummer!"};
+        {"Eine negative Matrikelnummer ist nicht zul\u00E4ssig!",
+          "Bitte w\u00E4hlen Sie eine andere Matrikelnummer!"};
         JOptionPane.showMessageDialog(null, msgA, "Neuer Student", JOptionPane.WARNING_MESSAGE);
         addClicked();
         return;
@@ -79,7 +79,7 @@ public class TreeBranchStudentContextMenu extends TreeBranchContextMenu
       {
         String[] msgA = 
           {"Ein Student mit dieser Matrikelnummer existiert bereits!",
-            "Bitte wählen Sie eine andere Matrikelnummer!"};
+            "Bitte w\u00E4hlen Sie eine andere Matrikelnummer!"};
         JOptionPane.showMessageDialog(null, msgA, "Neuer Student", JOptionPane.WARNING_MESSAGE);
         addClicked();
         return;
