@@ -37,7 +37,7 @@ import prakman.model.Workspace;
 import prakman.view.inset.SaveResetEditPanel;
 
 /**
- *  
+ *  Panel fuer die Gruppenzuordnung.
  */
 public class GroupPanel extends BasePanel implements Saveable
 {
@@ -135,12 +135,11 @@ public class GroupPanel extends BasePanel implements Saveable
   		Group g = db.getGroup(groupID);
   		g.setDesc(this.txtGroupDesc.getText());
   		g.updateGroup();
-  		JOptionPane.showMessageDialog(this, 
-  				"Erfolgreich gespeichert.\nBitte das Fenster schlieen\u00DF,\num \u00C4nderungen zu sehen.");
   		return true;
   	}
   	catch(SQLException sqlEx)
   	{
+      JOptionPane.showMessageDialog(this, "Fehler beim Speichern!");
   		sqlEx.printStackTrace();
   		return false;
   	}

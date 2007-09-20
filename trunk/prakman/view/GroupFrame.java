@@ -25,7 +25,7 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 
 /**
- * Beschreibung einer Gruppe aendern
+ * Frame das ein Panel zur Bearbeitung einer Gruppe enthaelt.
  */
 public class GroupFrame extends JFrame
 {
