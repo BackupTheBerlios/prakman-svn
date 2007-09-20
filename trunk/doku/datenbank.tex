@@ -1,0 +1,73 @@
+\chapter{Datenbank}
+\label{cha:Datenbank}
+
+
+\section{Dokumentation der Datenbank}
+\label{sec:DokuDerDatenbank}
+Als Datenbank ist für ``PrakMan'' die Nutzung unterschiedlicher Angebote möglich. Unterstützt werden derzeit Hypersonic-DB (HSQL, sowohl lokal als auch extern) und PostgreSQL. Dafür wurde der Aufbau der Tabellen relativ einfach gehalten, um allen Datenbanken gerecht zu werden.\\
+In den folgenden Abschnitten wird der genaue Aufbau der für ``PrakMan'' benötigten Tabellen beschrieben bzw. dargestellt.
+
+\section{Entity- Relationship- Modell (ERM) der Datenbank}
+\label{sec:ERM}
+Der Aufbau der Datenbank, welche für den Praktikums-Manager unabdingbar ist, ist in den Grafiken auf den Seiten \pageref{img:ERM-Tutor-Events}, \pageref{img:ERM-Tutor-Events-Projekt} und \pageref{img:ERM-Tutor-Events-Termine} dargestellt. Einige Tabellen werden dabei mehrfach gezeigt, um jeweils den Zusammenhang zu den Grundobjekten (Student, Tutor, Event) darzustellen.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[width=\gfxwidth]{gfx/PrakMan_DB_student_tutor_event}
+\caption{ER-Modell der Beziehungen zwischen Student, Tutor und Event}
+\label{img:ERM-Tutor-Events}
+\end{center}
+\end{figure}
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[width=\gfxwidth]{gfx/PrakMan_DB_ERM_event_project}
+\caption{ER-Modell der Beziehungen zwischen Student, Tutor, Events und Projekten}
+\label{img:ERM-Tutor-Events-Projekt}
+\end{center}
+\end{figure}
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[width=\gfxwidth]{gfx/PrakMan_DB_ERM_terms}
+\caption{ER-Modell der Beziehungen zwischen Student, Tutor, Events und Terminen}
+\label{img:ERM-Tutor-Events-Termine}
+\end{center}
+\end{figure}
+
+\section{Prüfung des Relationenschemas auf Einhaltung der Normalisierung}
+\label{sec:PruefungRelationsschema}
+
+\subsection{1te Normalform}
+\label{subsec:1teNormalform}
+Alle Tabellen enthalten atomare Attribute. Listen werden durch zusätzliche Tabellen dargestellt.\\
+Somit ist 1NF erfüllt.
+
+\subsection{2te Normalform}
+\label{subsec:2teNormalform}
+Alle Relationen sind in 1NF.
+Außerdem haben alle Objekte (Studenten, Tutoren, Events, Termine, Gruppen, Projekte) eine in der entsprechenden Relation einmalige Identifikationsnummer (ID). Jegliche Verweise laufen ausschließlich über solche IDs. Somit bestehen auch sämtliche Primärschlüssel aus einer ID oder mehreren IDs, von denen alle weiteren Attribute voll funktional abhängen. Weitere Daten werden für Referenzen nicht benötigt, weshalb auch keine redundaten Daten in diesem Zusammenhang auftreten können.\\
+Somit ist 2NF erfüllt.
+
+\subsection{3te Normalform}
+\label{subsec:3teNormalform}
+Alle Relationen sind in 2NF.
+Auch hier ist die Eindeutigkeit ausschließlich über die vorhandenen IDs hergestellt. Keine andere Kombination von Schlüsselkandidaten existiert und würde eine weitere Identifikation eines Objekts in einer Tabelle ermöglichen.
+Demnach können auch keine Nicht-Schlüssel-Attribute von anderen Nicht-Schlüssel-Attributen funktional abhängen.\\
+Somit ist 3NF erfüllt.
+
+\section{Funktionsbeschreibung der Formatprogramme}
+\label{sec:FunktionsbeschreibungFormatprogramme}
+
+Zum Erstellen der Tabellen wird kein Formatprogramm benötigt. Bei Programmstart wird automatisch eine passende SQL-Datei gelesen und die Tabellen, falls nötig, erstellt.
+
+\section{Funktionsbeschreibung der Reportprogramme}
+\label{sec:FunktionsbeschreibungReportprogramme}
+
+Es wurde kein spezielles Reportprogramm zum Auslesen der Datenbank geschrieben, da das, in verbesserter Darstellung, eine Funktion das Programms ``PrakMan'' ist.
+
+\section{Funktionsbeschreibung der SQL- /ESQL- /JDBC- Programme}
+\label{sec:FunktionsbeschreibungSQLJDBC}
+
+Wie bereits in Punkt \ref{sec:FunktionsbeschreibungFormatprogramme} erwähnt, liest ``PrakMan'' zum Erstellen der Tabellen eine SQL-Datei ein und erstellt nach diesen Vorgaben, falls nötig, das Grundgerüst für eine korrekte Funktionsweise. Die genannte Datei ist ``CreateTables.sql'', welche sich im Paket prakman.io.sql befindet. Auf diese Weise lassen sich bei Änderung eines Datenbankprogramms auf eine andere Version sehr einfach die Tabellen anpassen.\\
+Für die Zukunft wäre auch eine Erweiterung denkbar, die für jede Datenbankform eine extra angepasste SQL-Datei enthält, um optimal die Möglichkeiten der unterschiedlichen Datenbanktypen nutzen zu können.

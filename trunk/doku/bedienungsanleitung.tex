@@ -1,0 +1,189 @@
+\section{Bedienungsanleitung}
+\label{sec:Bedienungsanleitung}
+
+\subsection{Startbildschirm}
+\label{subsec:hb_start}
+Wird ``PrakMan'' gestartet, bietet sich dem Benutzer die in Abb.\ref{img:hb_start} (S.\pageref{img:hb_start}) dargestellte Eingabemaske. Dort müssen beim ersten Mal mehrere Informationen angegeben werden. ``PrakMan'' merkt sich zusätzlich die vier letztgewählten Arbeitsverzeichnisse und die dazugehörigen Verbindungsparameter. Beim nächsten Start sind so immer automatisch die letzten Einstellungen ausgewählt.
+
+\begin{enumerate}
+\item Ein Arbeitsverzeichnis muss gewählt werden. Hier legt ``PrakMan'' seine Konfigurationsdatei und ggf. die interne Datenbank ab.
+\item Entschieden werden, ob eine interne oder externe Datenbank genutzt werden soll.
+
+Eine interne Datebank wird in einigen Dateien im gewählten Arbeitsverzeichnis abgelegt.
+\item Bei Nutzung einer externen Datenbank müssen noch weitere Informationen für eine korrekte Verbindung angegeben werden. Dazu gehört der Datenbanktyp, die Adresse des Servers, der Name der Datenbank, der Benutzername und das zugehörige Passwort.
+\end{enumerate}
+Sind all diese Angaben gemacht, kann ``PrakMan'' durch Drücken des OK-Buttons gestartet werden.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[scale=\screensize]{gfx/hb/hb_start}
+\caption{Startbildschirm von ``PrakMan''}
+\label{img:hb_start}
+\end{center}
+\end{figure}
+
+\subsection{Hauptbildschirm}
+\label{subsec:hb_hauptGUI}
+Wurden alle Einstellungen im Startdialog gemacht und eine Verbindung zur gewählten Datenbank erfolgreich hergestellt, wird die in Abb.\ref{img:hb_hauptGui} (S.\pageref{img:hb_hauptGui}) dargestellte Oberfläche aufgerufen. Dieses Fenster bleibt die ganze Zeit über sichtbar und ist in drei Bereiche aufgeteilt.
+
+\begin{enumerate}
+\item Die Menüleiste: Hier kann der Arbeitsbereich bzw. die Datenbank gewechselt sowie sämtliche Studentendaten ausgedruckt werden. Auch Informationen über ``PrakMan'' sind von dort aus erreichbar.
+\item Der Baum im linken Teil. Hier sind sämtliche Informationen aus der Datenbank aufgelistet: Alle Veranstaltungen, Dozenten sowie Studenten. Über einen Doppelklick können diese Objekte dann im rechten Teil des Fensters geöffnet werden.
+\item Die Arbeitsfläche im rechten Teil. Hier werden alle Objekte geöffnet, um ihre Informationen anzusehen oder zu editieren.
+\end{enumerate}
+
+Der Baum bietet zudem für die Äste Veranstaltungen, Lehrende und Studenten sowie die darin enthaltenen Objekte unterschiedliche Menüs (siehe Abbildung \ref{img:hb_tree}, S.\pageref{img:hb_tree}), mit denen Daten importiert, exportiert, gedruckt, bearbeitet oder gelöscht werden können.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[scale=\screensize]{gfx/hb/hb_hauptGui}
+\caption{Hauptbildschirm von ``PrakMan''}
+\label{img:hb_hauptGui}
+\end{center}
+\end{figure}
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[scale=\screensize]{gfx/hb/hb_treeBranch}
+\includegraphics[scale=\screensize]{gfx/hb/hb_treeLeaf}
+\caption{Menü eines Astes sowie eines Objekts im Dateibaum von ``PrakMan''}
+\label{img:hb_tree}
+\end{center}
+\end{figure}
+
+\subsection{Eine Veranstaltung: Teilnehmer}
+\label{subsec:hb_eventTeilnehmer}
+Öffnet der Benutzer per Doppelklick darauf (oder Rechtsklick, anschließend Bearbeiten) eine Veranstaltung, so öffnet sich die in Abbildung \ref{img:hb_eventTeilnehmer} (S.\pageref{img:hb_eventTeilnehmer}) dargestellte Oberfläche. Dort können über die Eingabefelder im oberen Bereich allgemeine Einstellungen der Veranstaltung verändert werden: Der Name, der Dozent sowie die Beschreibung der Veranstaltung. Sollen diese Informationen gespeichert oder zurückgesetzt werden, helfen die Buttons ``Speichern'' und ``Zurücksetzen'', die direkt darüber positioniert sind.
+
+Die Tabelle darunter zeigt im standardmäßig geöffneten ``Teilnehmer-Tab'' die eingetragenen Teilnehmer der Veranstaltung samt Matrikelnummer, Nachname, Vorname und gegebenenfalls der bereits zugewiesenen Arbeitsgruppe.
+
+Sollen genauere Infos über einzelne Studenten angezeigt werden, können diese mit einem einfachen Doppelklick geöffnet werden. Wenn Sie die Studenten in Gruppen einteilen möchten, markieren Sie die gewünschten Teilnehmer in der Tabelle (Shift und Strg-Tasten sind zur Unterstützung möglich) und wählen Sie über einen Rechtsklick im darauf auftauchenden Menü die neue Gruppe aus.
+
+Die vier Buttons im unteren Teil der Ansicht ermöglichen es, auf einen Schlag alle oder keinen Studenten zu markieren, sowie neue Teilnehmer hinzuzufügen oder alte zu entfernen.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[scale=\screensize]{gfx/hb/hb_eventTeilnehmer}
+\caption{Teilnehmeransicht einer Veranstaltung sowie Zuweisung einer Gruppe in ``PrakMan''}
+\label{img:hb_eventTeilnehmer}
+\end{center}
+\end{figure}
+
+\subsection{Eine Veranstaltung: Projekte}
+\label{subsec:hb_eventProjekte}
+Die in Abbildung \ref{img:hb_eventProjekte} (S.\pageref{img:hb_eventProjekte}) dargestellte Ansicht öffnet sich, wenn beim Editieren eines Projektes (siehe Punkt \ref{subsec:hb_eventTeilnehmer}) der ``Projekte-Tab'' der Tabelle ausgewählt wird. Hier können alle für diese Veranstaltung angelegten Projekte eingesehen werden: Ihre Beschreibung, wann sie vergeben wurden und wann sie abgegeben werden soll(t)en.
+
+Die vier Buttons am unteren Rand ermöglichen es nun, entweder alle oder kein Projekt anzuwählen sowie neue Projekte hinzuzufügen oder alte zu löschen.
+
+Ein Doppelklick auf ein existierendes Projekt öffnet die in Abbildung \ref{img:hb_projektEdit} (S.\pageref{img:hb_projektEdit}) gezeigte Ansicht.
+In dieser ist es möglich, alle Daten eines Projektes zu ändern: Die Beschreibung, Start- und Endtermin, sowie die Teilnehmer und deren Benotung.
+
+Zum Editieren der Beschreibung, wird einfach eine neue in das entsprechende Textfeld eingetippt. Der ``Speichern-Button'' überträgt die Informationen in die Datenbank. Zum Setzen des Start- und Endtermins müssen die Buttons am rechten Rand dieser Eingabezeilen genutzt werden. Diese öffnen das in \ref{img:hb_datum} (S.\pageref{img:hb_datum}) gezeigte Fenster, in welchem eine Uhrzeit eingegeben sowie das gewünschte Datum über die Oberfläche ausgewählt werden kann. Die Studenten, die an diesem Projekt teilnehmen (sollen), können über die im unteren Teil implementierten ``Hinzufügen- und Entfernen-Buttons'' eingestellt werden. Zur Benotung eines einzelnen Studenten, reicht ein Doppelklick auf dessen Zeile in der Tabelle, welches das ebenfalls in Abbildung \ref{img:hb_projektEdit} (S.\pageref{img:hb_projektEdit}) gezeigte Eingabefeld öffnet, über welches dann eine neue Note vergeben werden kann.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[scale=\screensize]{gfx/hb/hb_eventProjekte}
+\caption{Projektansicht einer Veranstaltung in ``PrakMan''}
+\label{img:hb_eventProjekte}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[scale=\screensize]{gfx/hb/hb_projektEdit}
+\caption{Editieren eines Projektes sowie dessen Benotung in ``PrakMan''}
+\label{img:hb_projektEdit}
+\end{center}
+\end{figure}
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[scale=\screensize]{gfx/hb/hb_datum}
+\caption{Wählen eines Termins in ``PrakMan''}
+\label{img:hb_datum}
+\end{center}
+\end{figure}
+
+\subsection{Eine Veranstaltung: Termine}
+\label{subsec:hb_eventTermine}
+Die in Abbildung \ref{img:hb_eventTermine} (S.\pageref{img:hb_eventTermine}) dargestellte Ansicht öffnet sich, wenn beim Editieren eines Projektes (siehe Punkt \ref{subsec:hb_eventTeilnehmer}) der ``Termine-Tab'' der Tabelle ausgewählt wird. Hier können alle für diese Veranstaltung angelegten Termine eingesehen sowie neue hinzugefügt, alte gelöscht oder die tatsächlich anwesenden Teilnehmer eingetragen werden.
+
+
+Über die ``Hinzufügen- und Entfernen-Buttons'' am unteren Rand können nun neue Termine hinzugefügt sowie in der Tabelle markierte Termine entfernt werden.
+Soll ein neuer Termin angelegt werden, öffnet sich das in Abbildung \ref{img:hb_eventTermine} (S.\pageref{img:hb_eventTermine}) gezeigte Fenster. Dort muss über den Datumsbutton ein Zeitpunkt gewählt werden. Anschließend kann über Häkchen in der darunter befindlichen Tabelle gewählt werden, welche Studenten anwesend waren. Die selbe Ansicht (mit den selben Möglichkeiten) öffnet sich ebenfalls bei Doppelklick auf einen bereits vorhandenen Termin. Somit können auch alle Informationen im Nachhinein geändert werden.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[scale=\screensize]{gfx/hb/hb_eventTermine}
+\includegraphics[scale=\screensize]{gfx/hb/hb_terminEdit}
+\caption{Terminansicht einer Veranstaltung sowie Editieren eines Termins in ``PrakMan''}
+\label{img:hb_eventTermine}
+\end{center}
+\end{figure}
+
+
+\subsection{Eine Veranstaltung: Gruppen}
+\label{subsec:hb_eventGruppen}
+Die in Abbildung \ref{img:hb_eventGruppen} (S.\pageref{img:hb_eventGruppen}) dargestellte Ansicht öffnet sich, wenn beim Editieren eines Projektes (siehe Punkt \ref{subsec:hb_eventTeilnehmer}) der ``Gruppen-Tab'' der Tabelle ausgewählt wird. Hier können alle für diese Veranstaltung angelegten Gruppen eingesehen sowie neue hinzugefügt oder alte gelöscht werden.
+
+Die Buttons unter der Tabelle ermöglichen es, von links nach rechts, eine neue Gruppe zu erstellen, eine markierte Gruppe zu löschen, alle Gruppen zu selektieren und zuletzt alle abzuwählen.
+
+Wird eine Gruppe über den ``Hinzufügen-Button'' erstellt, erscheint in der Tabelle eine neue Gruppe ohne Beschreibung. Diese kann dann noch, wie alle anderen Gruppen auch, über einen Doppelklick editiert werden. Dabei wird das in Abbildung \ref{img:hb_eventGruppen} (S.\pageref{img:hb_eventGruppen}) gezeigte Eingabefenster aufgerufen, in welchem die Beschreibung editiert und per Button gespeichert werden kann.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[scale=\screensize]{gfx/hb/hb_eventGruppen}
+\includegraphics[scale=\screensize]{gfx/hb/hb_gruppeEdit}
+\caption{Gruppenansicht einer Veranstaltung sowie Editieren von Gruppeninformationen in ``PrakMan''}
+\label{img:hb_eventGruppen}
+\end{center}
+\end{figure}
+
+
+\subsection{Ein Tutor: Betreute Veranstaltungen}
+\label{subsec:hb_tutorPraktika}
+Öffnet der Benutzer per Doppelklick darauf oder Rechtsklick > Bearbeiten einen Tutor, so öffnet sich die in Abbildung \ref{img:hb_tutorPraktika} (S.\pageref{img:hb_tutorPraktika}) dargestellte Oberfläche. Dort können über die Eingabefelder im oberen Bereich allgemeine Informationen über den Tutor editiert werden. Sollen diese Informationen gespeichert oder zurückgesetzt werden, helfen die Buttons ``Speichern'' und ``Zurücksetzen'', die direkt darüber positioniert sind.
+
+Die Tabelle im zentralen Bereich des Fensters listet alle Veranstaltungen auf, für die dieser Tutor als Betreuer eingesetzt ist. Ein Doppelklick auf eine Veranstaltung öffnet diese in einem separaten Tab.
+
+Die vier Buttons unter der Tabelle ermöglichen es, von links nach rechts, den Tutor für eine noch unbetreute Veranstaltung einzutragen, ihn von einer Veranstaltung als Tutor zu entfernen, alle Veranstaltungen zu wählen und schließlich alle abzuwählen.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[scale=\screensize]{gfx/hb/hb_tutorPraktika}
+\caption{Ansicht aller betreuten Veranstaltungen eines Tutors in ``PrakMan''}
+\label{img:hb_tutorPraktika}
+\end{center}
+\end{figure}
+
+
+\subsection{Ein Student: Gewählte Veranstaltungen}
+\label{subsec:hb_studentPraktika}
+Öffnet der Benutzer per Doppelklick darauf oder Rechtsklick > Bearbeiten einen Studenten, so öffnet sich die in Abbildung \ref{img:hb_studentPraktika} (S.\pageref{img:hb_studentPraktika}) dargestellte Oberfläche. Dort können über die Eingabefelder im oberen Bereich allgemeine Informationen über den Studenten editiert werden. Sollen diese Informationen gespeichert oder zurückgesetzt werden, helfen die Buttons ``Speichern'' und ``Zurücksetzen'', die direkt darüber positioniert sind.
+
+Die Tabelle im zentralen Bereich des Fensters listet alle Veranstaltungen auf, an denen dieser Student teilnimmt als auch, falls dies der Fall ist, die Arbeitsgruppe in der er sich befindet sowie deren Beschreibung. Ein Doppelklick auf eine Veranstaltung öffnet diese in einem separaten Tab.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[scale=\screensize]{gfx/hb/hb_studentPraktika}
+\caption{Ansicht aller gewählten Veranstaltungen eines Studenten in ``PrakMan''}
+\label{img:hb_studentPraktika}
+\end{center}
+\end{figure}
+
+
+\subsection{Ein Student: Noten}
+\label{subsec:hb_studentNoten}
+Die in Abbildung \ref{img:hb_studentNoten} (S.\pageref{img:hb_studentNoten}) dargestellte Ansicht öffnet sich, wenn beim Editieren eines Projektes (siehe Punkt \ref{img:hb_studentPraktika}) der ``Noten-Tab'' der Tabelle ausgewählt wird. Hier können alle Noten eingesehen werden, die der Student bereits in jeglichen Veranstaltungen für unterschiedliche Projekte bekommen hat.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[scale=\screensize]{gfx/hb/hb_studentNoten}
+\caption{Ansicht aller bisher erreichten Noten eines Studenten in ``PrakMan''}
+\label{img:hb_studentNoten}
+\end{center}
+\end{figure}
+
+% experimentell
+\clearpage

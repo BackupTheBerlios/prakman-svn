@@ -1,0 +1,25 @@
+\chapter{Installation und Test}
+\label{chap:InstallationUndTest}
+
+\section{Testverfahren und Testdokumente mit automatischen Tests}
+\label{sec:Testverfahren}
+Die Software wurde auf unterschiedliche Arten auf korrekte Funktionsweise überprüft. Zuerst individuell durch den Entwickler, der seine Komponente direkt nach Fertigstellung prüft. Anschließend durch die anderen Entwickler, die diese Komponente im Zusammenspiel mit ihren eigenen testen. Schließlich ein Performance-Test durch eine vorher programmierte Automatik. 
+
+\subsection{Individuelle Komponenten-Tests}
+\label{subsec:IndividuelleKomponenten-Tests}
+Jeder Programmierer testet seine neu erstellte oder geänderte Komponente selbstständig auf korrekte Funktionsweise, um von Anfang an interne Fehler der Komponenten ausschließen zu können, wenn sie im Zusammenspiel mit dem Rest des Programms getestet wird.
+
+\subsection{Tests des Komponenten-Zusammenspiels}
+\label{subsec:Komponenten-Zusammenspiel-Tests}
+Dieses Tests wurden durchgeführt, wenn größere Abschnitte des Programms fertiggestellt sind bzw. neue Komponenten zum bereits funktionierenden Hauptteil hinzugefügt wurden. Dabei wurde sichergestellt, dass die neue Komponenten richtig mit den anderen zusammenarbeitet aber auch keine neuen Fehler mit sich bringt.
+
+\subsection{Performance-Test}
+\label{subsec:Performance-Test}
+Beim automatisierten Test wurden 15.000 zufällig generierte Studentendaten in das Programm eingefügt. Dabei ließ sich ``PrakMan'' weiterhin gut nutzen und blieb in seiner Funktionsweise stabil. Da diese Anzahl das normal erwartete Datenaufkommen von etwa 1.000 - 5.000 Studenten deutlich übersteigt, gilt eine gute Funktionsweise als gesichert.\\
+Der Test kann selbstständig durchgeführt, indem der Konfigurationsdatei ``config.conf'' im gewählten Arbeitsverzeichnis der Eintrag ``CrashTest=<Anzahl einzufügender Testwerte>'' hinzugefügt wird. Beim nächsten Start wird dann die angegebene Anzahl an Testwerten der Datenbank hinzugefügt.
+
+
+\section{Übergabedokument}
+\label{sec:Uebergabedokument}
+Übergeben wird eine CD mit dem Programm als JAR-Datei, den .java Dateien, der
+Dokumentation als PDF-Dokument sowie Javadoc und allen MS Visio-Dateien.

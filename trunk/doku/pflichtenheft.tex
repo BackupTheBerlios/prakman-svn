@@ -1,0 +1,367 @@
+\section{Pflichtenheft}
+\label{sec:Pflichtenheft}
+Pflichtenheft zur Erstellung einer Software zur Praktikaverwaltung.
+Das Projekt Praktika-Verwaltung beinhaltet die Planung und Realisierung eines Java-Programmsystems zur Verwaltung von Lehrveranstaltungen an der FH Osnabrück.
+
+\subsection{Zielbestimmung}
+\label{subsec:Zielbestimmung}
+Es sollen Praktika (zum Beispiel zur Lehrveranstaltung Software Engineering) verwaltet werden. Dazu ist es notwendig, ca. 60 Studierende mit Hilfe einer GUI zu erfassen, in Praktikumsgruppen zu jeweils ca. 20 aufzuteilen und deren Anwesenheit in einer der ca. 15 Veranstaltungen im Semester zu erfassen.
+Außerdem sollen die Studierenden Projekten zugeordnet werden können. Dazu müssen ca. 6 Projekte zum Teil mehrfach angelegt werden können, denen jeweils ca. 1-8 Studierende zugeordnet werden.
+Außerdem sollen den Studierenden Hausarbeiten zugeordnet werden können. Dazu müssen ca. 4-8 Hausarbeiten zum Teil mehrfach angelegt werden können, denen jeweils ca. 1-8 Studierende zugeordnet werden.
+Die Anwendung soll unterschiedliche Listen in unterschiedlicher Sortierung drucken können:
+\begin{itemize}
+\item Gesamtliste aller Studierenden der Veranstaltung
+\item Liste der Studierenden je Praktikum
+\item Liste mit Anwesenheit (gesamt und je Praktikum)
+\item Notenlisten (``bestanden'' für Projekt, Note für Hausarbeit)
+\end{itemize}
+
+Das Programm muss über eine persistente Datenhaltung verfügen, d.h. die Daten müssen in einer Datenbank oder in CSV-Dateien gehalten werden können.
+Die CSV-Dateien sollen mit Excel eingelesen werden können.
+Von jedem Studierenden werden die üblichen Daten erfasst (Name, Mat.-Nr, Semester, Studiengang, Email). Wünschenswert wäre eine Datenübernahme aus den von StudIP exportierten Teilnehmerdaten.
+Insgesamt soll eine benutzerfreundliche und leicht erweiterbare Anwendung zur Unterstützung von Lehrenden entstehen.
+
+\subsubsection{Musskriterien}
+\label{subsubsec:Musskriterien}
+\begin{itemize}
+\item Drucken von Anwesenheitslisten, Notenlisten
+\item Wechsel von Studierenden zwischen Praktika
+\item Möglichkeit, Studierende aus Praktika zu entfernen
+\item Sortierungen nach unterschiedlichen Kriterien
+\end{itemize}
+
+\subsubsection{Wunschkriterien}
+\label{subsubsec:Wunschkriterien}
+\begin{itemize}
+\item Schnittstelle zu StudIP: Import der dort exportierten Teilnehmerdaten
+\item Verwaltung eines Fotos je Teilnehmer
+%\item Filtern von Objekten
+%\item Druckvorschau
+\end{itemize}
+
+\subsubsection{Abgrenzungskriterien}
+\label{subsubsec:Abgrenzungskriterien} 
+\begin{itemize}
+\item Das Programm stellt keinen Ersatz für StudIP dar, sondern eine Unterstützung.
+\item Es soll keine direkte Anbindung an die StudIP-Datenbank geben.
+\end{itemize}
+
+\subsection{Produkteinsatz}
+\label{subsec:Produkteinsatz}
+Das Programm soll von Professoren oder Tutoren, welche mit der Leitung von Praktikumsgruppen betraut sind, genutzt werden.
+
+\subsubsection{Anwendungsbereiche}
+\label{subsubsec:Anwendungsbereiche}
+Das Programm soll es Professoren bzw. Tutoren erleichtern, ihre Praktikumsgruppen einzuteilen, Aufgaben und Noten zu verteilen und auf all diese Informationen in einer übersichtlichen Oberfläche zugreifen zu können.
+Zur Haltung der Daten kann dabei eine eigene, lokale Datenbank genutzt werden, oder auch eine externe, auf die mehrere Tutoren mit ``PrakMan'' zugreifen und gemeinsam ihre Daten verwalten.
+
+\subsubsection{Zielgruppen}
+\label{subsubsec:Zielgruppen}
+Das Programm soll von Professoren oder wissenschaftlichen Mitarbeitern, primär der Fachhochschule Osnabrück, eingesetzt werden. Möglich wäre aber auch ein Betrieb in anderen Hochschulen.
+Vorausgesetzt werden grobe Kenntnisse im Bereich von Datenbanken (Zugangsdaten) oder Allgemeinwissen über Programme (Mögliche Optionen über Rechtsklick erreichbar etc.).
+
+\subsubsection{Betriebsbedingungen}
+\label{subsubsec:Betriebsbedingungen}
+Das Programm benötigt keine gesonderte Beaufsichtigung, sondern kann direkt auf jedem PC, der die auf Seite \pageref{sec:Anforderungen} genannten Voraussetzungen erfüllt, genutzt werden.
+
+\subsubsection{Software}
+\label{subsubsec:Software}
+Siehe Punkt \ref{sec:Anforderungen} auf Seite \pageref{sec:Anforderungen}.
+
+\subsubsection{Hardware}
+\label{subsubsec:Hardware}
+Das Programm erfordert keine besondere Hardware.
+
+\subsubsection{Orgware}
+\label{subsubsec:Orgware}
+Um den zu organisierenden Veranstaltungen Studenten hinzufügen zu können, müssen Daten über diese bekannt sein. Dazu gehören die Matrikelnummer, Vorname, Nachname und eine E-Mail-Adresse. Diese Daten sollten im Voraus entweder auf Papier oder per CSV (für den Import) organisiert werden.
+
+\subsection{Schnittstellen}
+\label{subsec:Schnittstellen}
+Das Programm bietet eine JDBC-Schnittstelle, über die unterschiedliche Datenbanken angebunden werden können. ``PrakMan'' unterstützt momentan HSQL und PostgreSQL.
+
+\subsection{Produktfunktionen}
+\label{subsec:Produktfunktionen}
+
+\subsubsection{/F0001/Verbindung zur Datenbank}
+\label{subsubsec:/F0001/}
+\paragraph{Voraussetzung:}
+Keine
+\paragraph{Ablauf:}
+\begin{enumerate}
+\item Der Benutzer startet das Programm und wählt einen Datenbanktypen aus: Lokal (HSQL) oder PostgreSQL.
+\end{enumerate}
+\paragraph{Alternativen:}
+\begin{enumerate}
+\item[1a.] Die Verbindung schlägt fehl. Das kann an einer nicht vorhandenen Internetverbindung oder einem nicht gestarteten Datenbank-Server liegen.
+\end{enumerate}
+
+\subsubsection{/F0002/Erstellen einer Veranstaltung}
+\label{subsubsec:/F0002/}
+\paragraph{Voraussetzung:}
+\begin{enumerate}
+\item Der Benutzer hat PrakMan gestartet und die Verbindung zu einer Datenbank erfolgreich hergestellt.
+\end{enumerate}
+\paragraph{Ablauf:}
+\begin{enumerate}
+\item Der Benutzer klickt im Baum mit der rechten Maustaste auf den Ast ``Veranstaltungen'' und wählt ``Hinzufügen'' aus.
+\item Ein Professor wird ausgewählt, der die Veranstaltung betreuen soll.
+\item Die neue Veranstaltung ist erstellt, nun können weitere Einstellungen getroffen werden. 
+\end{enumerate}
+\paragraph{Alternativen:}
+\begin{enumerate}
+\item[1a.] Ein Datenbankfehler tritt auf. Die Verbindung zur Datenbank sollte überprüft werden.
+\end{enumerate}
+
+\subsubsection{/F0003/Hinzufügen von Studenten zu einer Veranstaltung}
+\label{subsubsec:/F0003/}
+\paragraph{Voraussetzung:}
+\begin{enumerate}
+\item Der Benutzer hat PrakMan gestartet und die Verbindung zu einer Datenbank erfolgreich hergestellt.
+\item Es existiert mindestens eine Veranstaltung.
+\end{enumerate}
+\paragraph{Ablauf:}
+\begin{enumerate}
+\item Der Benutzer öffnet die Ansicht der Veranstaltung über einen Doppelklick auf Selbige.
+\item Über den Plus-Button am unteren Rand des Fensters wird ein neues Panel geöffnet, über welches Studenten ausgewählt und durch einen Druck auf ``Ok'' der Veranstaltung hinzugefügt werden.
+\end{enumerate}
+\paragraph{Alternativen:}
+\begin{enumerate}
+\item[2a.] Es existieren keine Studenten. In diesem Fall müssen erst neue Studenten manuell erstellt oder über CSV eingelesen werden.
+\end{enumerate} 
+
+\subsubsection{/F0004/Einteilung der Studenten in Gruppen}
+\label{subsubsec:/F0004/}
+\paragraph{Voraussetzung:}
+\begin{enumerate}
+\item Der Benutzer hat PrakMan gestartet und die Verbindung zu einer Datenbank erfolgreich hergestellt.
+\item Es existiert mindestens eine Veranstaltung, deren Gruppen-Ansicht geöffnet ist.
+\end{enumerate}
+\paragraph{Ablauf:}
+\begin{enumerate}
+\item Ein Klick auf den Plus-Button erstellt eine neue Gruppe. Über einen Doppelklick auf ihren Namen kann deren Beschreibung editiert werden.
+\item Der Benutzer wechselt in die Teilnehmer-Ansicht und markiert dort über einfaches Ziehen mit der Maus, oder Shift/Strg-Klick einen oder mehrere Studenten, die zusammen eine Gruppe bilden sollen. Über einen rechtsklick auf die Tabelle kann diesen markierten Studenten nun eine Gruppe zugewiesen werden.
+\end{enumerate}
+\paragraph{Alternativen:}
+\begin{enumerate}
+\item[1a.] Ein Datenbankfehler tritt auf. Die Verbindung zur Datenbank sollte überprüft werden.
+\item[2a.] Es existieren noch keine Studenten in der Veranstaltung. In diesem Fall, können sie einfach über den Plus-Button in der Teilnehmer-Ansicht hinzugefügt werden.
+\end{enumerate}
+
+\subsubsection{/F0005/Ein Projekt hinzufügen}
+\label{subsubsec:/F0005/}
+\paragraph{Voraussetzung:}
+\begin{enumerate}
+\item Der Benutzer hat PrakMan gestartet und die Verbindung zu einer Datenbank erfolgreich hergestellt.
+\item Es existiert mindestens eine Veranstaltung, deren Projekte-Ansicht geöffnet ist.
+\end{enumerate}
+\paragraph{Ablauf:}
+\begin{enumerate}
+\item Ein Klick auf den Plus-Button erstellt ein neues unbenanntes Projekt.
+\item Über einen Doppelklick auf Selbiges, können diesem Projekt Teilnehmer hinzugefügt und außerdem dessen Beschreibung editiert werden. Zusätzlich kann eine ``Deadline'' gesetzt werden, zu welcher dieses Projekt beendet sein muss.
+\end{enumerate}
+\paragraph{Alternativen:}
+\begin{enumerate}
+\item[1a.] Ein Datenbankfehler tritt auf. Die Verbindung zur Datenbank sollte überprüft werden.
+\item[2a.] Es existieren keine Studenten, die zugeordnet werden können. In diesem Fall, können sie einfach über den Plus-Button in der Teilnehmer-Ansicht hinzugefügt werden.
+\end{enumerate}
+
+\subsubsection{/F0006/Einen Termin hinzufügen}
+\label{subsubsec:/F0006/}
+\paragraph{Voraussetzung:}
+\begin{enumerate}
+\item Der Benutzer hat PrakMan gestartet und die Verbindung zu einer Datenbank erfolgreich hergestellt.
+\item Es existiert mindestens eine Veranstaltung, deren Termine-Ansicht geöffnet ist.
+\end{enumerate}
+\paragraph{Ablauf:}
+\begin{enumerate}
+\item Ein Klick auf den Plus-Button öffnet ein Auswahlfenster, in dem ein Termin für die Veranstaltung ausgewählt werden kann. Zuerst sollte eine Uhrzeit angegeben werden. Ein Klick auf einen Tag im Kalender fügt diesen Termin dann der Veranstaltung hinzu.
+\end{enumerate}
+\paragraph{Alternativen:} Keine
+
+\subsubsection{/F0007/Den Tutor einer Veranstaltung ändern}
+\label{subsubsec:/F0007/}
+\paragraph{Voraussetzung:}
+\begin{enumerate}
+\item Der Benutzer hat PrakMan gestartet und die Verbindung zu einer Datenbank erfolgreich hergestellt.
+\item Es existiert mindestens eine Veranstaltung.
+\end{enumerate}
+\paragraph{Ablauf:}
+\begin{enumerate}
+\item Über einen Doppelklick auf eine Veranstaltung links im Baum, öffnet sich deren Hauptansicht. Nun kann über die Dropdown-Box im oberen rechten Bereich einer der in der Datenbank registrierten Professoren ausgewählt werden.
+\item Über den Button ``Speichern'' (oben links) wird die Information in die Datenbank übernommen.
+\end{enumerate}
+\paragraph{Alternativen:}
+\begin{enumerate}
+\item[1a.] Statt einer Veranstaltung wird im Baum ein Lehrender ausgewählt. Bei diesem kann dann über den Plus-Button eine Veranstaltung zugeordnet werden.
+\item[1b.] Es ist kein weiterer Professor vorhanden. In dem Fall müssen manuell oder per CSV-Import neue Lehrende hinzugefügt werden.
+\item[2a.] Ein Datenbankfehler tritt auf. Die Verbindung zur Datenbank sollte überprüft werden.
+\end{enumerate}
+
+\subsubsection{/F0008/Einen neuen Dozenten hinzufügen}
+\label{subsubsec:/F0008/}
+\paragraph{Voraussetzung:}
+\begin{enumerate}
+\item Der Benutzer hat PrakMan gestartet und die Verbindung zu einer Datenbank erfolgreich hergestellt.
+\end{enumerate}
+\paragraph{Ablauf:}
+\begin{enumerate}
+\item Der Benutzer klickt im Baum mit der rechten Maustaste auf den Ast ``Lehrende'' und wählt ``Hinzufügen'' aus.
+\item Im auftauchenden Panel werden die benötigten Daten ``Vorname'' und ``Nachname'' eingetragen.
+\item Ein Druck auf den Button ``Speichern'' überträgt die Informationen in die Datenbank, der neue Dozent ist erstellt.
+\end{enumerate}
+\paragraph{Alternativen:}
+\begin{enumerate}
+\item[3a.] Ein Datenbankfehler tritt auf. Die Verbindung zur Datenbank sollte überprüft werden.
+\end{enumerate}
+
+\subsubsection{/F0009/Einen neuen Studenten hinzufügen}
+\label{subsubsec:/F0009/}
+\paragraph{Voraussetzung:}
+\begin{enumerate}
+\item Der Benutzer hat PrakMan gestartet und die Verbindung zu einer Datenbank erfolgreich hergestellt.
+\end{enumerate}
+\paragraph{Ablauf:}
+\begin{enumerate}
+\item Der Benutzer klickt im Baum mit der rechten Maustaste auf den Ast ``Studenten'' und wählt ``Hinzufügen'' aus.
+\item Im auftauchenden Eingabefeld wird die 6-stellige Matrikelnummer des Studenten angegeben. Ein Druck auf ``OK'' lässt ein neues Panel erscheinen.
+\item Im erschienenen Panel werden die benötigten Daten ``Vorname'', ``Nachname'' und ``E-Mail'' eingetragen.
+\item Ein Druck auf den Button ``Speichern'' überträgt die Informationen in die Datenbank, der neue Student ist erstellt.
+\end{enumerate}
+\paragraph{Alternativen:}
+\begin{enumerate}
+\item[4a.] Ein Datenbankfehler tritt auf. Die Verbindung zur Datenbank sollte überprüft werden.
+\end{enumerate}
+
+\subsubsection{/F0010/Daten in CSV exportieren}
+\label{subsubsec:/F0010/}
+\paragraph{Voraussetzung:}
+\begin{enumerate}
+\item Der Benutzer hat PrakMan gestartet und die Verbindung zu einer Datenbank erfolgreich hergestellt.
+\end{enumerate}
+\paragraph{Ablauf:}
+\begin{enumerate}
+\item Der Benutzer klickt im Baum mit der rechten Maustaste auf einen der Äste ``Lehrende'', ``Studenten'' \emph{oder} direkt auf eine bestimmte Veranstaltung und wählt ``Export''.
+
+Wird ein Ast ausgewählt, werden nur die Informationen der Objekte in diesem Ast in der CSV-Datei gespeichert. Wird eine einzelne Veranstaltung ausgewählt, werden deren gesamte Informationen detailliert gespeichert. Dies beinhaltet Gruppen, Aufgaben, Teilnehmer und Termine.
+\item Der Benutzer wählt im auftauchenden Dialog einen Dateinamen. Ein Druck auf ``Speichern'' beendet die Aktion und erstellt die CSV-Datei mit den gewünschten Informationen.
+\end{enumerate}
+\paragraph{Alternativen:}
+\begin{enumerate}
+\item[1a.] Es gibt noch keine Veranstaltungen, Lehrenden oder Studenten. In dem Fall wird auch nichts exportiert.
+\item[2a.] Der Benutzer hat kein Schreibrecht, das Speichern schlägt fehl. In diesem Fall sollten Sie Ihre Benutzerrechte auf dem PC überprüfen.
+\end{enumerate} 
+
+\subsubsection{/F0011/CSV-Daten importieren}
+\label{subsubsec:/F0011/}
+\paragraph{Voraussetzung:}
+\begin{enumerate}
+\item Der Benutzer hat PrakMan gestartet und die Verbindung zu einer Datenbank erfolgreich hergestellt.
+\end{enumerate}
+\paragraph{Ablauf:}
+\begin{enumerate}
+\item Der Benutzer klickt im Baum mit der rechten Maustaste auf einen der Äste ``Lehrende'', ``Studenten'' \emph{oder} direkt auf eine bestimmte Veranstaltung und wählt ``Import''.
+
+Wird ein Ast ausgewählt werden nur Listeninformationen der Objekte in diesen Ast übernommen. Wird eine einzelne Veranstaltung ausgewählt, wird auch eine CSV-Datei mit detaillierten Informationen über diese Veranstaltung benötigt. Dies beinhaltet Gruppen, Aufgaben, Teilnehmer und Termine.
+\item Der Benutzer wählt im auftauchenden Dialog einen Dateinamen. Ein Druck auf ``Öffnen'' beendet die Aktion und erstellt die Objekte im Baum respektive füllt die gewählte Veranstaltung mit detaillierten Informationen.
+\end{enumerate}
+\paragraph{Alternativen:}
+\begin{enumerate}
+\item[1a.] Es gibt noch keine Veranstaltung, die direkt ausgewählt werden kann. In diesem Fall müssen Sie zuerst eine Veranstaltung erstellen.
+\item[2a.] Ihre CSV-Datei ist falsch formatiert und wird vom System nicht verstanden.
+\end{enumerate}
+
+\subsubsection{/F0012/Ein Projekt benoten}
+\label{subsubsec:/F0012/}
+\paragraph{Voraussetzung:}
+\begin{enumerate}
+\item Der Benutzer hat PrakMan gestartet und die Verbindung zu einer Datenbank erfolgreich hergestellt.
+\item Es existiert mindestens eine Veranstaltung, die zumindest ein Projekt enthält und deren Projekte-Ansicht geöffnet ist.
+\end{enumerate}
+\paragraph{Ablauf:}
+\begin{enumerate}
+\item Ein Doppelklick auf das Projekt öffnet ein Auswahlfenster, in dem Ausgabe -und Abgabetermin festgelegt, Studenten zum Projekt hinzugefügt und dessen Beschreibung editiert werden kann.
+\item Ein Doppelklick auf das Notenfeld eines Studenten öffnet eine Eingabemaske, in der eine neue Note für diesen Studenten festgelegt werden kann.
+\end{enumerate}
+\paragraph{Alternativen:}
+Keine
+
+
+\subsection{Produktdaten}
+\label{subsec:Produktdaten}
+
+\subsubsection{/D0001/Studentendaten}
+\label{subsubsec:/D0001/}
+Vorname, Nachname, E-Mail-Adresse und Matrikelnummer von Studenten. Des weiteren Projekte und Termine, an denen Studenten teilnehmen bzw. teilgenommen haben sowie die Benotung einzelner Projekte.
+
+\subsubsection{/D0002/Dozentendaten}
+\label{subsubsec:/D0002/}
+Vorname und Nachname eines Dozenten.
+
+\subsubsection{/D0003/Veranstaltungsdaten}
+\label{subsubsec:/D0003/}
+Name, Beschreibung, Teilnehmer, Projekte und Termine einer Veranstaltung.
+
+\subsection{Produktleistungen}
+\label{subsec:Produktleistungen}
+
+\subsubsection{/L0001/Komfort}
+\label{subsubsec:/L0001/}
+Das Erstellen von Veranstaltungen, Füllen mit Studenten und Verteilen von Aufgaben soll möglichst einfach und schnell möglich sein. Das Programm soll die Arbeit erleichtern und nicht verkomplizieren.
+
+\subsection{Benutzungsoberfläche}
+\label{subsec:Benutzungsoberflaeche}
+
+\subsubsection{Bildschirmlayout}
+\label{subsubsec:Bildschirmlayout}
+Das Bildschirmlayout soll die Daten übersichtlich darstellen und einen möglichst schnellen und effektiven Zugriff ermöglichen. Es soll möglich sein, mehrere Informationen gleichzeitig zu öffnen.
+
+\subsubsection{Drucklayout}
+\label{subsubsec:Drucklayout}
+Das Drucklayout soll möglichst übersichtlich Informationen über die Teilnehmer einer Veranstaltung und deren Benotung liefern.
+
+\subsubsection{Tastaturlayout}
+\label{subsubsec:Tastaturlayout}
+Eine gesonderte Hotkey-Nutzung der Tastatur ist nicht vorgesehen. Das Programm soll es dafür ermöglichen, mit der Maus möglichst einfach von einer Information zur nächsten damit zusammenhängenden zu kommen.
+
+\subsubsection{Dialoglayout}
+\label{subsubsec:Dialoglayout}
+Die Dialoge sollen möglichst viele Icons enthalten, die ihren Zweck direkt deutlich machen. Dazu sollen Tooltips existieren, die auch bei einer Unklarheit weiterhelfen.
+
+\subsection{Qualitätszielbestimmungen}
+\label{subsec:Qualitaetszielbestimmungen}
+\begin{itemize}
+\item Funktionalität: \hfill Sehr wichtig
+\item Zuverlässigkeit: \hfill Wichtig
+\item Benutzbarkeit: \hfill Relativ wichtig
+\item Effizienz: \hfill Unwichtig
+\item Übertragbarkeit: \hfill Vernachlässigbar
+\end{itemize}
+
+\subsection{Globale Testszenarien und Testfälle}
+\label{subsec:Testszenarien}
+
+\subsubsection{/T0001/Eingabe einer bereits vorhandenen oder negativen Matrikel-Nr.}
+\label{subsubsec:/T0001/}
+Die Eingabe wird mit einer Fehlermeldung zurückgewiesen.
+
+\subsubsection{/T0002/Angeben einer ungültig formatierten CSV-Datei beim Import}
+\label{subsubsec:/T0002/}
+Die Datei wird als falsch formatiert zurückgewiesen.
+
+
+\subsection{Entwicklungsumgebung}
+\label{subsec:Entwicklungsumgebung}
+\begin{itemize}
+\item Java 1.5
+\item Eclipse
+\item Subversion zur verbesserten Teamarbeit
+\end{itemize}
+
+\subsection{Ergänzungen}
+\label{subsec:Ergaenzungen}
+Keine Ergänzungen.
+
+\subsection{Begriffserklärung}
+\label{subsec:Begriffserklaerung}
+Vollständige Erklärung wichtiger Begriffe, siehe Abschnitt \ref{chap:Glossar} (S.\pageref{chap:Glossar}).

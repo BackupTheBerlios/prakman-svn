@@ -1,0 +1,83 @@
+% report = normales Tex-package
+% scrreprt = koma-script package
+\documentclass[pdftex, a4paper,11pt]{scrreprt}
+% Glossar erstellen
+\usepackage{glossary}
+\makeglossary
+% deutsche Silbentrennung
+\usepackage[ngerman]{babel}
+% wegen deutschen Umlauten
+\usepackage[ansinew]{inputenc}
+% Grafikpaket
+\usepackage{graphicx}
+\usepackage[bottom, hang]{footmisc}	% Zeilenumbrüche in Fußnoten verbessern
+% Abstaende festlegen
+\frenchspacing
+%Font/Größe der Überschriften festlegen
+\setkomafont{sectioning}{\normalcolor\bfseries}
+
+% Begriffserkärung
+\usepackage{nomencl}
+% Kommando umbenennen
+\let\abbrev\nomenclature
+% Deutsche Überschrift /Keine Überschrift
+\renewcommand{\nomname}{Begriffserklärung}
+% Zeilenabstände verkleinern
+\setlength{\nomitemsep}{-\parsep}
+\setlength{\nomlabelwidth}{.25\hsize}
+\makenomenclature
+
+\newcommand{\autor}{Philipp Rollwage, Christian Lins, Kai Ritterbusch, Andreas Depping}
+\newcommand{\thema}{Software-Entwicklung im Bereich Projektmanagement}
+\newcommand{\titel}{PrakMan: Der Praktikums-Manager}
+\newcommand{\keywords}{Software-Engineering, PrakMan, Hausarbeit}
+
+\newcommand{\gfxwidth}{1.0\textwidth}
+\newcommand{\screensize}{0.4}
+
+% PDF-Links erstellen
+\usepackage[
+	colorlinks	=true,
+	linkcolor	=black, %blue,
+	citecolor	=black, %blue,
+	a4paper		=true,
+	plainpages	=false,
+	pdftex		=true,
+	hyperindex	=true,
+	pagebackref	=true,
+	breaklinks	=true,
+	bookmarks	=true,
+	%bookmarksopen		=true,
+	bookmarksnumbered	=true,
+	pdfauthor	={\autor},
+	pdftitle	={\titel},
+	pdfkeywords	={\keywords},
+	pdfsubject	={\thema},
+	pdfcreator	={LaTeX},
+	pdfproducer	={pdfTeX + hyperRef}
+	%pdfmenubar=false,
+	%pdftoolbar=false
+]{hyperref}
+\pdfcompresslevel =9
+
+\date{\today}
+\author{Philipp Rollwage \and Christian Lins \and Kai Ritterbusch \and Andreas Depping}
+\title{\titel}
+
+\begin{document}
+
+\maketitle
+\label{cha:Inhaltsverzeichnis}
+\tableofcontents
+
+%Kapitel der Ausarbeitung
+\input{programmkenndaten.tex}
+\input{programmaufbau.tex}
+\input{datenbank.tex}
+\input{installationTest.tex}
+\input{programmbetrieb.tex}
+\input{glossar.tex}
+
+
+
+\end{document}

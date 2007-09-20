@@ -1,0 +1,14 @@
+\begin{thenomenclature} 
+
+ \nomgroup{A}
+
+  \item [{Event}]\begingroup Eine Veranstaltung oder ein Praktikum für eine gegebene Veranstaltung\nomeqref {5.0}
+		\nompageref{46}
+  \item [{PrakMan}]\begingroup Steht für Praktikums-Manager, das dokumentierte Programm.\nomeqref {5.0}
+		\nompageref{46}
+  \item [{Project}]\begingroup Eine Aufgabe, die an Studierende verteilt werden kann. Projekte sind notwendig, um Noten zu verteilen. Ein Projekt kann demnach auch das Bestehen der gesamten Veranstaltung darstellen.\nomeqref {5.0}
+		\nompageref{46}
+  \item [{SubVersion (SVN)}]\begingroup SubVersion ist eine Open-Source-Software zur Versionsverwaltung von Dateien und Verzeichnissen.\nomeqref {5.0}
+		\nompageref{46}
+
+\end{thenomenclature}
