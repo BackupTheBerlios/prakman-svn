@@ -1,0 +1,300 @@
+\chapter{Programmaufbau und Dokumentation}
+\label{cha:ProgrammaufbauUndDokumentation}
+% Programmstruktur mit Funktionsbaum, Geschäftsprozessen mit Strukturierter Analyse
+% Datenflussdiagrammen ( DFD ) und Data Dictionary ( DD ), sowie Gliederung der
+% Module/Packages und deren Klassen mit kurzer Leistungsbeschreibung
+
+\section{Programmstruktur}
+\label{sec:Programmstruktur}
+Die folgenden Abschnitte präsentieren, oftmals in graphischer Form, den Aufbau sowie die Funktionsweise und den Fluss der Daten in ``PrakMan''.
+
+\subsection{Datenflussdiagramm}
+\label{subsec:Datenflussdiagramm}
+Sämtliche Daten werden in ``PrakMan'' in einer Datenbank verwaltet. Alle Informationen gehen dort hinein und kommen von dort zurück. Diese verwaltet somit immer den aktuellen Stand der Informationen. Abbildung \ref{img:DFD} (S.\pageref{img:DFD}) veranschaulicht den Datenfluss in einem Diagramm.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[width=\gfxwidth]{gfx/DFD}
+\caption{Datenflussdiagramm von ``Prakman''}
+\label{img:DFD}
+\end{center}
+\end{figure}
+
+%\subsection{Funktionsbaum}
+%\label{subsec:Funktionsbaum}
+
+\subsection{Gliederung der Packages}
+\label{subsec:GliederungDerPackages}
+Abbildung \ref{img:Paketgliederung} (S.\pageref{img:Paketgliederung}) stellt die Gliederung der Pakete in ``PrakMan'' dar.
+Das Grundpaket ist hierbei in hellblau dargestellt, darunter folgen unterschiedliche Farben für jeweils andere Bereiche. Die Farben sind je nach weiterer Spezialisierung des Pakets in steigender Intensität gewählt.
+
+Hier ist - wie auch im Klassenhierarchiediagramm unter Punkt \ref{img:Klassenhierarchiediagramm} (S.\pageref{img:Klassenhierarchiediagramm}) - deutlich die Aufteilen von ``PrakMan'' zu erkennen:
+\begin{itemize}
+\item Das Paket ``prakman.io'' sorgt für den Informationsfluss. Es speichert die Daten in der Datenbank und stellt sie wiederum bereit.
+\item Das Paket ``prakman.model'' stellt Objekte bereit, die die Informationen aus der Datenbank logisch kapseln und dann zur Weiterverarbeitung genutzt werden können.
+\item Das Paket ``prakman.view'' stellt die Daten für den Benutzer dar, sorgt aber auch für die Interaktion mit dem Benutzer.
+\item Das Paket ``resource'' ist lediglich ein Speicherort für Icons, könnte jedoch noch auf weitere Resourcen wie z.B. abgelegte Fotos etc. erweitert werden.
+\end{itemize}
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[width=\gfxwidth]{gfx/PaketGliederung}
+\caption{Paketgliederung von ``Prakman''}
+\label{img:Paketgliederung}
+\end{center}
+\end{figure}
+
+\section{Klassenhierarchiediagramm} % in UML- Notation
+\label{sec:Klassenhierarchiediagramm}
+Abbildung \ref{img:Klassenhierarchiediagramm} (S.\pageref{img:Klassenhierarchiediagramm}) stellt die Schichtung des Programms und das Zusammenspiel der wichtigsten Klassen von ``PrakMan'' in Form eines Klassenhierarchiediagramms dar.
+Hierbei befinden sich in der obersten Schicht die Klassen, welche die Darstellung übernehmen. In der Schicht darunter folgen die Objekte, welche die Informationen aus der Datenbank in Objekten gekapselt präsentieren. Die daruner liegende Schicht enthält die Klassen, über die diese Informationen bezogen werden. Schließlich ist in der untersten Schicht zusätzlich die Startklasse sowie eine Klasse, welche das Speichern von lokalen Konfigurationsdaten übernimmt, dargestellt.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[width=\gfxwidth]{gfx/Klassendiagramm}
+\caption{Klassenhierarchiediagramm von ``Prakman'' (wichtige Klassen)}
+\label{img:Klassenhierarchiediagramm}
+\end{center}
+\end{figure}
+
+
+\section{Klassendokumentation}
+\label{sec:Klassendokumentation}
+% mit Attributen und Operationen und deren vollständiger
+% Schnittstellenspezifikation mit Typdefinitionen, Parametern, Resultaten und
+% Leistungsbeschreibung, sowie Fehlermeldungen . mittels javadoc
+Siehe Verzeichnis ``Javadoc'' auf der beiliegenden CD.
+
+%\section{Innere Dokumentation}
+%\label{sec:InnereDokumentation}
+% mit Leistungsbeschreibung, kommentierten Listings, Beschreibung
+% der Parameter und Variablen, Kurz-/Lang- und JAVA- Kommentare
+
+
+% experimentell
+\clearpage
+
+\section{Programmablauf}
+\label{sec:Programmablauf}
+% mit Struktogrammen, Programmablaufplänen, etc.
+Die folgenden Programmablaufpläne verdeutlichen, wie die in Kapitel \ref{subsec:Produktfunktionen} (S.\pageref{subsec:Produktfunktionen}) geforderten Funktionen in der Praxis in ``PrakMan'' umgesetzt sind.
+
+\paragraph{/F0001/Verbindung zur Datenbank:}
+Die Planung der Funktion kann dem Pflichtenheft, Kapitel \ref{subsubsec:/F0004/} (S.\pageref{subsubsec:/F0004/}) entnommen werden. Die Umsetzung ist in der Abbildung \ref{img:Ablauf_start} (S.\pageref{img:Ablauf_start}) dargestellt.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[width=\gfxwidth]{gfx/Ablauf_start}
+\caption{/F0001/ Ablaufplan: Programmstart}
+\label{img:Ablauf_start}
+\end{center}
+\end{figure}
+
+\paragraph{/F0002/Erstellen einer Veranstaltung:}
+Die Planung der Funktion kann dem Pflichtenheft, Kapitel \ref{subsubsec:/F0002/} (S.\pageref{subsubsec:/F0002/}) entnommen werden. Die Umsetzung ist in der Abbildung \ref{img:Ablauf_ve_hinzu} (S.\pageref{img:Ablauf_ve_hinzu}) dargestellt.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[width=\gfxwidth]{gfx/Ablauf_ve_hinzu}
+\caption{/F0002/ Ablaufplan: Eine Veranstaltung hinzufügen}
+\label{img:Ablauf_ve_hinzu}
+\end{center}
+\end{figure}
+
+\paragraph{/F0003/Hinzufügen von Studenten zu einer Veranstaltung:}
+Die Planung der Funktion kann dem Pflichtenheft, Kapitel \ref{subsubsec:/F0003/} (S.\pageref{subsubsec:/F0003/}) entnommen werden. Die Umsetzung ist in der Abbildung \ref{img:Ablauf_studToEvent} (S.\pageref{img:Ablauf_studToEvent}) dargestellt.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[width=\gfxwidth]{gfx/Ablauf_studToEvent}
+\caption{/F0003/ Ablaufplan: Studenten zu einer Veranstaltung hinzufügen}
+\label{img:Ablauf_studToEvent}
+\end{center}
+\end{figure}
+
+\paragraph{/F0004/Einteilung der Studenten in Gruppen:} 
+Die Planung der Funktion kann dem Pflichtenheft, Kapitel \ref{subsubsec:/F0004/} (S.\pageref{subsubsec:/F0004/}) entnommen werden. Die Umsetzung ist in der Abbildung \ref{img:Ablauf_studToGroup} (S.\pageref{img:Ablauf_studToGroup}) dargestellt.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[width=\gfxwidth]{gfx/Ablauf_studToGroup}
+\caption{/F0004/ Ablaufplan: Studenten einer Veranstaltung in Gruppen einteilen}
+\label{img:Ablauf_studToGroup}
+\end{center}
+\end{figure}
+
+\paragraph{/F0005/Ein Projekt hinzufügen:}
+Die Planung der Funktion kann dem Pflichtenheft, Kapitel \ref{subsubsec:/F0005/} (S.\pageref{subsubsec:/F0005/}) entnommen werden. Die Umsetzung ist in der Abbildung \ref{img:Ablauf_addProject} (S.\pageref{img:Ablauf_addProject}) dargestellt.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[width=\gfxwidth]{gfx/Ablauf_addProject}
+\caption{/F0005/ Ablaufplan: Ein neues Projekt hinzufügen}
+\label{img:Ablauf_addProject}
+\end{center}
+\end{figure}
+
+\paragraph{/F0006/Einen Termin hinzufügen:}
+Die Planung der Funktion kann dem Pflichtenheft, Kapitel \ref{subsubsec:/F0006/} (S.\pageref{subsubsec:/F0006/}) entnommen werden. Die Umsetzung ist in der Abbildung \ref{img:Ablauf_addTerm} (S.\pageref{img:Ablauf_addTerm}) dargestellt.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[width=\gfxwidth]{gfx/Ablauf_addTerm}
+\caption{/F0006/ Ablaufplan: Einen neuen Termin für eine Veranstaltung hinzufügen}
+\label{img:Ablauf_addTerm}
+\end{center}
+\end{figure}
+
+\paragraph{/F0007/Den Tutor einer Veranstaltung ändern:}
+Die Planung der Funktion kann dem Pflichtenheft, Kapitel \ref{subsubsec:/F0007/} (S.\pageref{subsubsec:/F0007/}) entnommen werden. Die Umsetzung ist in der Abbildung \ref{img:Ablauf_changeTutor} (S.\pageref{img:Ablauf_changeTutor}) dargestellt.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[width=\gfxwidth]{gfx/Ablauf_changeTutor}
+\caption{/F0007/ Ablaufplan: Den Tutor einer Veranstaltung ändern}
+\label{img:Ablauf_changeTutor}
+\end{center}
+\end{figure}
+
+\paragraph{/F0008/Einen neuen Dozenten hinzufügen:}
+Die Planung der Funktion kann dem Pflichtenheft, Kapitel \ref{subsubsec:/F0008/} (S.\pageref{subsubsec:/F0008/}) entnommen werden. Die Umsetzung ist in der Abbildung \ref{img:Ablauf_tut_hinzu} (S.\pageref{img:Ablauf_tut_hinzu}) dargestellt.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[width=\gfxwidth]{gfx/Ablauf_tut_hinzu}
+\caption{/F0008/ Ablaufplan: Einen neuen Dozenten hinzufügen}
+\label{img:Ablauf_tut_hinzu}
+\end{center}
+\end{figure}
+
+\paragraph{/F0009/Einen neuen Studenten hinzufügen:}
+Die Planung der Funktion kann dem Pflichtenheft, Kapitel \ref{subsubsec:/F0009/} (S.\pageref{subsubsec:/F0009/}) entnommen werden. Die Umsetzung ist in der Abbildung \ref{img:Ablauf_stud_hinzu} (S.\pageref{img:Ablauf_stud_hinzu}) dargestellt.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[width=\gfxwidth]{gfx/Ablauf_stud_hinzu}
+\caption{/F0009/ Ablaufplan: Einen neuen Studenten hinzufügen}
+\label{img:Ablauf_stud_hinzu}
+\end{center}
+\end{figure}
+
+\paragraph{/F0010/Daten in CSV exportieren und /F0011/CSV-Daten importieren:}
+Die Planung der Funktion kann dem Pflichtenheft, Kapitel \ref{subsubsec:/F0010/} (S.\pageref{subsubsec:/F0010/}) entnommen werden. Die Umsetzung ist in der Abbildung \ref{img:Ablauf_csv} (S.\pageref{img:Ablauf_csv}) dargestellt.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[width=\gfxwidth]{gfx/Ablauf_csv}
+\caption{/F0010/ und /F0011/ Ablaufplan: CSV-Import/Export}
+\label{img:Ablauf_csv}
+\end{center}
+\end{figure}
+
+\paragraph{/F0012/Ein Projekt benoten}
+Die Planung der Funktion kann dem Pflichtenheft, Kapitel \ref{subsubsec:/F0012/} (S.\pageref{subsubsec:/F0012/}) entnommen werden. Die Umsetzung ist in der Abbildung \ref{img:Ablauf_benoten} (S.\pageref{img:Ablauf_benoten}) dargestellt.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[width=\gfxwidth]{gfx/Ablauf_benoten}
+\caption{/F0012/ Ablaufplan: Ein Projekt benoten}
+\label{img:Ablauf_benoten}
+\end{center}
+\end{figure}
+
+% experimentell
+\clearpage
+
+\section{Anwendungsgrenzen und Fehlersituationen}
+\label{sec:AnwendungsgrenzenFehlersituationen}
+``PrakMan'' erlaubt es bei Verwendung einer externen Datenbank, dass mehrere Benutzer auf der selben Datenbasis arbeiten. In diesem Fall können Probleme auftreten, falls unterschiedliche Benutzer gleichzeitig versuchen, die selben Datensätze zu verändern. In den meisten Fällen konnte diesem Problem mit dem gezielten Einsatz von Batches entgegengewirkt werden. Alle Problemsituationen können damit jedoch nicht sicher umgangen werden.
+\paragraph{Ein Beispiel: Löschen und Editieren eine Veranstaltung:}
+Dozent ``A'' und Dozent ``B'' greifen beide auf die selbe Datenbank ``DB'' zu. A öffnet nun die Veranstaltung ``VC`` in seinem Programm in einem Tab. Kurz danach löscht B die Veranstaltung VC aus der Datenbank DB. A möchte nun, neue Mitglieder zu VC hinzufügen und wählt diese aus. Sobald A diese Informationen in DB übertragen hat, ist VC auf einmal wieder vorhanden - jedoch ohne Projekte, Noten und Termine.
+
+Diese Fälle stellen nicht wirklich einen Fehler dar, zeigen jedoch das Problem, das besteht, weil Datenbank und Programm nicht ständig auf dem gleichen Stand gehalten werden können.
+
+\section{Benutzeroberflächenhierarchie}
+\label{sec:BOFhierarchie}
+In ``PrakMan'' existiert ein Hauptfenster, der ``MainFrame''. In diesem befindet sich auf der linken Seite ein Baum, auf der rechten Seite ein ``TabbedPane'', welches unterschiedliche Panels hält, die die Informationen der Objekte aus dem Baum für den Benutzer darstellen.
+
+Den Zusammenhang bzw. die Hierarchie dieses Bereichs stellt die Abbildung \ref{img:BOF_MainFrame_Panels} (S.\pageref{img:BOF_MainFrame_Panels}) dar.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[width=\gfxwidth]{gfx/BOF_MainFrame_Panels}
+\caption{Ablaufplan: Hierarchie der Benutzeroberfläche, ausgehend vom MainFrame}
+\label{img:BOF_MainFrame_Panels}
+\end{center}
+\end{figure}
+
+Abbildung \ref{img:BOF_Workspace_Tree} (S.\pageref{img:BOF_Workspace_Tree}) geht weiter auf den speziellen Aufbau der Kontextmenüs im Baum (linke Seite der Benutzeroberfläche) ein.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[width=\gfxwidth]{gfx/BOF_Workspace_Tree}
+\caption{Ablaufplan: Hierarchie der Benutzeroberfläche, speziell des Baumes, ausgehend vom Workspace}
+\label{img:BOF_Workspace_Tree}
+\end{center}
+\end{figure}
+
+% experimentell
+\clearpage
+
+\section{Funktionsbeschreibung der Benutzeroberflächen und deren Komponenten}
+\label{sec:BOFBeschreibung}
+Exemplarisch die Zusammenstellung der wichtigsten GUI-Masken und eine Beschreibung ihrer Funktion(en):
+
+\paragraph{MainFrame} = JMenuBar + txtFilter + splitPane + Workspace (Tree) + tabbedPane + [ EventPanel | TutorPanel | StudentPanel ]
+
+Im Mainframe laufen alle Fenster zusammen. Er stellt das äußere Gerüst dar, zu welchem der Baum gehört, der alle O
+bjekte übersichtlich zur Verfügung stellt, sowie die Menüleiste, welche weitere Optionen anbietet. Außerdem erlaubt er durch eine ``splitPane'' das einfache Verändern der Größe der beiden Teilbereiche des Hauptfensters. Zuletzt ist auch das ``tabbedPane'', in welchem weitere Unterpanels angezeigt werden, ein Teil dieses Hauptfensters.
+
+\paragraph{BasePanel} = JPanel
+
+Das BasePanel stellt eine Basisklasse für weitere Objektpanels dar. Es legt  hauptsächlich abstrakte Methoden fest, die in den abgeleiteten Klassen implementiert werden müssen. Ansonsten ist es ein einfaches JPanel, das anschließend mit Inhalten gefüllt werden kann.
+
+\paragraph{EventPanel} = BasePanel + SaveResetEditPanel + eventContentPanel + tabbedPane + [ eventMemberPanel | eventResultPanel | eventTermsPanel | eventGroupsPanel ]
+
+Das EventPanel ist eine Ableitung des BasePanel und wird im ``tabbedPane'' des MainFrame angezeigt. Dieses Panel zeigt alle Informationen an, die über eine Veranstaltung existieren. Dazu gehören eine Beschreibung, die Teilnehmer, Arbeitsgruppen, Projekte bzw. Hausarbeiten, und Termine sowie Anwesenheitslisten für Letztere. All diese Daten können über das Panel auch editiert werden. Es erlaubt somit eine umfassende Administration einer gewählten Veranstaltung.
+
+\paragraph{TutorPanel} = BasePanel + SaveResetEditPanel + tutorContentPanel +  tabbedPane + [ tutorPraktPanel ]
+
+Das TutorPanel stellt ebenfalls eine Ableitung des BasePanel dar und wird an der gleichen Stelle angezeigt. Hier können Dozenten-bezogene Daten gefunden werden: Vorname, Nachname und welche Veranstaltungen vom gewählten Dozenten angeboten werden. All diese Informationen lassen sich wiederum editieren.
+
+\paragraph{StudentPanel} = BasePanel + SaveResetEditPanel + studentContentPanel +  tabbedPane + [ studentPraktPanel |  studentResultsPanel ]
+
+Auch das StudentPanel ist eine Ableitung des BasePanel und wird im ``tabbedPane'' des MainFrame angezeigt. Hier können Studenten-bezogene Daten eingesehen und editiert werden: Vorname, Nachname, E-Mail-Adresse, an welchen Veranstaltungen nimmt der/die Student/in teil und welche Projekte werden bearbeitet oder wurden auch schon benotet. Die beiden letztgenannten Funktionen müssen allerdings über eine Veranstaltung vorgenommen werden und können hier lediglich angezeigt werden. Die Tabellen bieten dafür allerdings die Möglichkeit, über einen Doppelklick auf Veranstaltungs/Tutor/Studenten -daten das entsprechende Objekt separat zu öffnen, um dort direkt weiterarbeiten zu können.
+
+
+\section{Dateiaufbau aller Anwenderdateien mit DD- Beschreibung und Funktion}
+\label{sec:DateiaufbauAnwenderdateien}
+% Formatierung der CSV-Daten
+\subsection{Export von Studentendaten:}
+\label{subsec:Dateiaufbau_CSV_Studenten}
+Beim Exportieren von Studentendaten werden Vorname, Nachname, Matrikelnummer und E-Mail-Adresse in einer CSV-Datei gespeichert. Der Aufbau sieht folgendermaßen aus.
+
+\paragraph{studenten.csv} = Vorname + Name + E-Mail + Matrikelnummer
+
+\subsection{Export von Dozentendaten:}
+\label{subsec:Dateiaufbau_CSV_Dozenten}
+Beim Exportieren von Dozentendaten werden Vorname, Nachname sowie eine intern vergebene Dozenten-ID in einer CSV-Datei gespeichert. Der Aufbau sieht folgendermaßen aus.
+
+\paragraph{dozenten.csv} = Vorname + Name + Tutor-ID
+
+\subsection{Export von Veranstaltungsdaten:}
+\label{subsec:Dateiaufbau_CSV_Veranstaltung}
+Beim Exportieren von Daten einer gewählten Veranstaltung werden alle verfügbaren Informationen in einer mehrschichtigen CSV-Datei zusammengestellt. Alle Zeitangaben werden als Unix-Timestamp exportiert. Der Aufbau dieser CSV ist etwas komplexer und sieht folgendermaßen aus.
+
+\paragraph{veranstaltung.csv} = Veranstaltungs-Info + Tutor-Info + Studenten-Info + Projekt-Info + Benotungs-Info + Termin-Info
+
+Alle Informations-Abschnitte sind durch eine Leerzeile sowie eine Zeile, in der die Bezeichnung der Spalten untergebracht ist, getrennt.
+
+\paragraph{Veranstaltungs-Info} = Veranstaltungsname + Veranstaltungs-ID
+
+\paragraph{Tutor-Info} = Tutor-ID + Nachname + Vorname
+
+\paragraph{Studenten-Info} = Matrikelnummer + Name + Vorname + E-Mail
+
+\paragraph{Projekt-Info} = Projekt-ID + Beschreibung + Startzeit + Endzeit
+
+\paragraph{Benotungs-Info} = Projekt-ID + Matrikelnummer + Note
+
+\paragraph{Termin-Info} = Termin-ID + Zeitpunkt
