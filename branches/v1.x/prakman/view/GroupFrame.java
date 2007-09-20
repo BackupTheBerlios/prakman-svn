@@ -39,7 +39,7 @@ public class GroupFrame extends JFrame
 		super("Gruppe bearbeiten");
 		this.groupID	= gID;		
 		setLayout(new BorderLayout());		
-		this.groupPanel = new GroupPanel(groupID);
+		this.groupPanel = new GroupPanel(groupID, this);
     setContentPane(groupPanel);		
 		this.setLocation(MainFrame.getInstance().getLocation());
 		this.pack();

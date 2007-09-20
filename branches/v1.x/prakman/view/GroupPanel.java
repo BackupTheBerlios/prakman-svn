@@ -29,7 +29,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
+import javax.swing.JFrame;
 import prakman.io.Database;
 import prakman.io.Saveable;
 import prakman.model.Group;
@@ -47,9 +47,11 @@ public class GroupPanel extends BasePanel implements Saveable
   private JTextField txtGroupNo;
   private JTextField txtGroupDesc;  
 	private JPanel     groupsContentPanel	= new JPanel();
-	
-	public GroupPanel(int gID)
+	private JFrame     parent;
+  
+	public GroupPanel(int gID, JFrame parent)
 	{
+    this.parent  = parent;
 		this.groupID = gID;
 		
     // Felder fuellen
@@ -135,13 +137,15 @@ public class GroupPanel extends BasePanel implements Saveable
   		Group g = db.getGroup(groupID);
   		g.setDesc(this.txtGroupDesc.getText());
   		g.updateGroup();
-  		JOptionPane.showMessageDialog(this, 
-  				"Erfolgreich gespeichert.\nBitte das Fenster schlieen\u00DF,\num \u00C4nderungen zu sehen.");
-  		return true;
+  		
+      parent.setVisible(false);
+      return true;
   	}
   	catch(SQLException sqlEx)
   	{
   		sqlEx.printStackTrace();
+      JOptionPane.showMessageDialog(this, "Fehler beim Speichern!");
+
   		return false;
   	}
   }
