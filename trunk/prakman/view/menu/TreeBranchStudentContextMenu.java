@@ -133,7 +133,6 @@ public class TreeBranchStudentContextMenu extends TreeBranchContextMenu
     ArrayList<Student> stds = Workspace.getInstance().getDatabase().getStudents();
     data = stds.toArray(new CSVPortable[0]);
     
-//    CSVPorter.exportTo(fc.getSelectedFile().getAbsolutePath(), data);
     if(CSVPorter.exportTo(fc.getSelectedFile().getAbsolutePath(), data))
     {
       String[] msg = {"Erfolgreich exportiert!"};
