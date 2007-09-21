@@ -167,7 +167,8 @@ public class TreeLeafEventContextMenu extends TreeLeafContextMenu
     {
       if(CSVPorter.exportEventTo(fc.getSelectedFile().getAbsolutePath(), (Event)selectedObject))
       {
-        String[] msg = {"Erfolgreich exportiert!"};
+        String[] msg = {"Erfolgreich exportiert!\nBitte beachten Sie, dass " +
+        		"Anwesenheitsinformationen \nnicht exportiert werden."};
         JOptionPane.showMessageDialog(MainFrame.getInstance(), msg);
       }
       else 
@@ -191,7 +192,8 @@ public class TreeLeafEventContextMenu extends TreeLeafContextMenu
           throw new Exception();
         else
         {
-          JOptionPane.showMessageDialog(MainFrame.getInstance(), "Import erfolgreich!");
+          JOptionPane.showMessageDialog(MainFrame.getInstance(),
+          	"Import erfolgreich!\nBitte beachten Sie, dass Anwesenheitsinformationen\nnicht importiert werden. ");
         }
       }
     }
