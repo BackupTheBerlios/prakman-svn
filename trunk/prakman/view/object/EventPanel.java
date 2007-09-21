@@ -681,7 +681,7 @@ public class EventPanel
     {
       try
       {
-        int   termID = Workspace.getInstance().getDatabase().getTerms().size();         
+        int   termID = Workspace.getInstance().getDatabase().getNewTermID();         
         new AttendantsFrame(getEvent().getID(), termID, new Timestamp(new Date().getTime()), this);
       }
       catch(SQLException ex)

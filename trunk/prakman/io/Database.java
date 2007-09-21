@@ -618,6 +618,27 @@ public class Database
     else
       return 1;
   }
+  
+  /** 
+   * Gibt die naechste freie Term-ID zurueck.
+   */
+  public int getNewTermID() throws SQLException
+  {   
+    Statement stmt = connection.createStatement();
+
+    ResultSet rs = stmt.executeQuery("SELECT MAX(TermID) as C FROM "+
+      Config.getInstance().get(CONFIG_TABLE_PREFIX, DEFAULT_PREFIX)
+      +"_term");
+    
+    if(rs == null)
+      throw new SQLException("Connection is closed!");  
+  
+    if(rs.next())
+      return rs.getInt("C") + 1;
+    else
+      return 1;
+  }
+  
   /** 
    * Gibt die naechste freie Project-ID zurueck.
    */
@@ -1116,7 +1137,7 @@ public class Database
         "(TermID,MatrikelNo) VALUES (" + termID + ", ? )");
     
     PreparedStatement psD = this.connection.prepareStatement("DELETE FROM " + pref + "_termToStudent " + 
-    "WHERE MatrikelNo = ? AND TermID = " + termID);
+        "WHERE MatrikelNo = ? AND TermID = " + termID);
     
     for(ArrayList<Object> subData : attended)
     {     

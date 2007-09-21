@@ -65,7 +65,7 @@ public class AttendantsPanel extends BasePanel
   private int termID;
   private JTextField txtDate;
   private Term term;
-  private boolean newItem = true;  
+//  private boolean newItem = true;  
   private Table attendants;
   private JPanel attendantsContentPanel = new JPanel();
   private JScrollPane attendantsViewPane  = new JScrollPane();  
@@ -74,7 +74,7 @@ public class AttendantsPanel extends BasePanel
   public AttendantsPanel(int evID, int terID, Timestamp date, AttendantsFrame ref)
   {
     this(evID, terID, ref);
-    newItem = false;
+    //newItem = false;
     this.date = date;
     txtDate.setText(date.toLocaleString());
     txtDate.setEnabled(false);
@@ -245,7 +245,7 @@ public class AttendantsPanel extends BasePanel
   {
   	ArrayList<ArrayList<Object>> attended	= new ArrayList<ArrayList<Object>>();
 	  TableModel tm = (TableModel)(this.getAttendants().getModel());
-	  for(int i=0;i<this.getAttendants().getRowCount();i++)
+	  for(int i = 0; i < this.getAttendants().getRowCount(); i++)
 	  {
 		  ArrayList<Object> subData = new ArrayList<Object>();
 		  
@@ -260,8 +260,8 @@ public class AttendantsPanel extends BasePanel
 	  try
 	  {
       term       = new Term(termID, eventID, date);
-		  Workspace.getInstance().getDatabase().setAttendanceStatus(this.termID, attended);
       reference.getEventPanel().getEvent().addTerm(term);
+		  Workspace.getInstance().getDatabase().setAttendanceStatus(this.termID, attended);
       reference.getEventPanel().refreshTermsTable();      
 		  return true;
 	  }
