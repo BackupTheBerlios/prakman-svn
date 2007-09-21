@@ -43,7 +43,7 @@ import prakman.view.object.EventPanel;
  * und eine ArrayList<Integer> mit Matrikelnummern von Studenten, die verschoben
  * werden sollen.
  * @author PR
- * @version	0.2
+ * @version	0.3
  */
 public class StudentToGroupMenu extends JPopupMenu
 {
@@ -116,7 +116,7 @@ public class StudentToGroupMenu extends JPopupMenu
 			
 			for(Group g : groupNo)
 			{
-				JMenuItem mItem = new JMenuItem(Integer.toString(g.getID()));
+				JMenuItem mItem = new JMenuItem(Integer.toString(g.getID()) + " (" + g.getDesc() + ")");
 				mItems.add(mItem);
 				setGroup.add(mItem);
 				// ActionListener
@@ -129,7 +129,7 @@ public class StudentToGroupMenu extends JPopupMenu
 						for(Group g : groupNo)
 						{
 							// Gruppe in zur Verfuegung gestellten Gruppen suchen
-							if (g.getID() == Integer.parseInt(e.getActionCommand()))
+							if (g.getID() == Integer.parseInt(e.getActionCommand().split(" ")[0])) // etwas gehackt!
 							{
 								// alle selektierten Studenten erst aus ihren alten Gruppen entfernen,
 								// dann in die angegebene Gruppe einfuegen
