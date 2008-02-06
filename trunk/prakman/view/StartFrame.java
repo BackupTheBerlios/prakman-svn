@@ -60,8 +60,8 @@ public class StartFrame
     {
     //  "Hypersonic DB",
     //  "MySQL (defekt)",
-      "PostgreSQL"
-    //  "Oracle"
+      "PostgreSQL",
+      "Oracle (in Progress)"
     };
   
   private static final long serialVersionUID = 0;
