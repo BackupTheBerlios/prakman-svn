@@ -58,10 +58,11 @@ public class TutorToEventFrame extends BaseFrame
        table = new Table(tm);
        setTableSize();
        getContentPane().add(new JScrollPane(table), BorderLayout.CENTER);
+       //System.out.println("Hier: Col:"+tm.getColumnCount()+"-Row:"+tm.getRowCount());
     }
     catch (Exception e) 
     {
-      e.printStackTrace();
+       e.printStackTrace();
     }
     
     // Hinzufuegen

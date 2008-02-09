@@ -44,16 +44,16 @@ public class StartFrame
     {
    // "org.hsqldb.jdbcDriver",
    // "com.mysql.jdbc.Driver",
-    "org.postgresql.Driver"
-   // "oracle.jdbc.driver.OracleDriver"
+    "org.postgresql.Driver",
+    "oracle.jdbc.driver.OracleDriver" 
     };
   
   public static final String[] DB_HOSTS =
     {
    // "jdbc:hsqldb:file:",
    // "jdbc:mysql://localhost/",
-    "jdbc:postgresql://localhost/"
-   // "jdbc:oracle:thin:@131.173.108.224/"
+    "jdbc:postgresql://localhost/",
+    "jdbc:oracle:thin:@192.168.92.112:1521:"
     };
   
   public static final String[] DB_NAMES =
@@ -61,7 +61,7 @@ public class StartFrame
     //  "Hypersonic DB",
     //  "MySQL (defekt)",
       "PostgreSQL",
-      "Oracle (in Progress)"
+      "Oracle (Beta)"
     };
   
   private static final long serialVersionUID = 0;
@@ -271,6 +271,7 @@ public class StartFrame
       if(radioExternalDb.isSelected())
       {
         Config conf = workspace.getConfig();
+        conf.set("SELECTED_OBJECT", cmbDbType.getSelectedIndex());
         conf.set(Database.CONFIG_DRIVER, DB_DRIVERS[cmbDbType.getSelectedIndex()]);
         conf.set(Database.CONFIG_DATABASE, txtDbName.getText());
         conf.set(Database.CONFIG_HOST, txtDbHost.getText());
@@ -312,10 +313,14 @@ public class StartFrame
         if(cfg.get(Config.USE_EXTERNAL_DB, "false").equals("true"))
         {
           radioExternalDb.setSelected(true);
+          cmbDbType.setSelectedIndex(cfg.get("SELECTED_OBJECT", 0));
           txtDbHost.setText(cfg.get(Database.CONFIG_HOST, Database.DEFAULT_HOST));
           txtDbName.setText(cfg.get(Database.CONFIG_DATABASE, Database.DEFAULT_DATABASE));
           txtDbPwd.setText(cfg.get(Database.CONFIG_PASSWORD, Database.DEFAULT_PASSWORD));
           txtDbUser.setText(cfg.get(Database.CONFIG_USER, Database.DEFAULT_PASSWORD));
+          
+          //System.out.println("Hier: "+cfg.get(Database.CONFIG_DRIVER, Database.DEFAULT_DRIVER));
+          
         }
       }
       catch(Exception ex)

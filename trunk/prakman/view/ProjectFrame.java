@@ -425,6 +425,7 @@ public class ProjectFrame extends BaseFrame
             orgEnd = new Timestamp(Long.MAX_VALUE);
           newEnd = new Timestamp(orgEnd.getTime()); 
         }
+        //System.out.println("Begin:"+newBegin.toString());
         db.updateProject(projectID, prjDesc.getText(), newBegin, newEnd);
         // Tabelle auf EventPanel aktualisieren
         ((EventPanel)ref).refreshProjectsTable();

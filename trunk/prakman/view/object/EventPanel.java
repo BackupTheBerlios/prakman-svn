@@ -541,6 +541,7 @@ public class EventPanel
 			  // Vergabedatum
 			  Timestamp date = db.getProjectDate(proj);
 			  
+			  //Problem ist das hier manchmal auch nix drin ist!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			  subData.add(sdf.format(date));
 			  // Abgabedatum
 			  // Das Abgabedatum kann nicht festgelegt sein. In dem Fall: Open End

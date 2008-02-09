@@ -29,6 +29,8 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.sql.Timestamp;
 import java.util.*;
+
+import oracle.jdbc.driver.OracleDriver;
 import prakman.Config;
 import prakman.model.*;
 
@@ -55,6 +57,7 @@ public class Database
   public static final String DEFAULT_PASSWORD    = "";
   public static final String DEFAULT_PREFIX      = "pm";
   private Connection         connection;
+  private String 			 driver;
   //private Statement          stmt;
   private Workspace          workspace;
 
@@ -64,7 +67,8 @@ public class Database
   public Database(Workspace workspace) throws ClassNotFoundException
   {
     this.workspace = workspace;
-    String driver = workspace.getConfig().get(CONFIG_DRIVER, DEFAULT_DRIVER);
+    driver = workspace.getConfig().get(CONFIG_DRIVER, DEFAULT_DRIVER);
+    System.out.println("Benutzter Treiber: "+driver);
     Class.forName(driver);
   }
 
@@ -107,6 +111,7 @@ public class Database
     else
     {
       // Externe Datenbank
+      DriverManager.registerDriver(new OracleDriver());
       this.connection = DriverManager.getConnection(host + db, user, pw);
       System.out.println("Verwende externe Datenbank: " + host);
     }
@@ -146,6 +151,7 @@ public class Database
   {
     Statement stmt = connection.createStatement();
     System.out.println("Lege neue Tabellen an");
+  
     String sqlCode = Resource.getAsString("prakman/io/sql/CreateTables.sql", true);
     
     sqlCode = sqlCode.replaceAll("PREFIX", Config.getInstance().get(
@@ -1579,12 +1585,18 @@ public class Database
     ArrayList<ArrayList<Object>> events = new ArrayList<ArrayList<Object>>();
     String prefix = Config.getInstance().get(CONFIG_TABLE_PREFIX,
         DEFAULT_PREFIX);
-    String tutorTable = prefix + "_tutor";
+    //String tutorTable = prefix + "_tutor";
     String eventTable = prefix + "_event";
+    
+    //System.out.println("Select * from " + eventTable + " where tutorid = 0");
+    /*
     ResultSet rs = stmt.executeQuery("Select " + eventTable + ".*,"
         + tutorTable + ".* " + "from " + eventTable + " left join "
         + tutorTable + " on " + eventTable + ".TutorID = " + tutorTable
-        + ".TutorID where TutorId = 0");
+        + ".TutorID where TutorId = 0");*/
+    
+    ResultSet rs = stmt.executeQuery("Select * from " + eventTable + " where tutorid = 0");
+    
     while (rs.next())
     {
       ArrayList<Object> innerEvents = new ArrayList<Object>();
@@ -1684,9 +1696,20 @@ public class Database
     Statement stmt = connection.createStatement();
     try
     {
-      stmt.executeUpdate("INSERT INTO " + pref + "_term"
-        + "(TermID,EventID,DateEdit) VALUES(" + term.getTermID() + "," + ev.getID() + ",'" +term.getDate()+"'"
-        + ")");
+      //TO_DATE(  ,'YYYY-MM-DD hh24:mi:ss.***')
+      if (driver.equals("oracle.jdbc.driver.OracleDriver"))
+      {
+    	  stmt.executeUpdate("INSERT INTO " + pref + "_term"
+    			  + "(TermID,EventID,DateEdit) VALUES(" + term.getTermID() + "," + ev.getID() 
+    			  + ",TO_DATE('" +term.getDate()+"','YYYY-MM-DD hh24:mi:ss.***')"
+    			  + ")");    	  
+      }
+      else
+      {
+    	  stmt.executeUpdate("INSERT INTO " + pref + "_term"
+    			  + "(TermID,EventID,DateEdit) VALUES(" + term.getTermID() + "," + ev.getID() + ",'" +term.getDate()+"'"
+    			  + ")");    	  
+      }
     }
     catch (SQLException sqlE) 
     {
@@ -1795,12 +1818,27 @@ public class Database
   /** Updatet ein Projekt */
   public void updateProject(int projectID, String desc, Timestamp begin, Timestamp end) throws SQLException
   {									
-    Statement stmt = connection.createStatement();
-    stmt.executeUpdate("UPDATE "
-        + Config.getInstance().get(CONFIG_TABLE_PREFIX, DEFAULT_PREFIX)
-        + "_project set " + "Description   = '" + desc + "', "
-        + "DateEdit  = '" + begin.toString() + "', Deadline = '" + end.toString() +
-        "' where ProjectID = " + projectID);
+    //System.out.println("Begin:"+begin.t+" end:"+end.toString());
+	  //TO_DATE(  ,'YYYY-MM-DD hh24:mi:ss.SSSSS')
+	Statement stmt = connection.createStatement();
+    if(driver.equals("oracle.jdbc.driver.OracleDriver")) // Ausnahme für Oracle
+    {
+    	stmt.executeUpdate("UPDATE "
+            + Config.getInstance().get(CONFIG_TABLE_PREFIX, DEFAULT_PREFIX)
+            + "_project set " + "Description   = '" + desc + "', "
+            + "DateEdit = TO_DATE('" + begin.toString() + "','YYYY-MM-DD hh24:mi:ss.***'),"
+            + "Deadline = TO_DATE('" + end.toString() + "','YYYY-MM-DD hh24:mi:ss.***')"
+            + " where ProjectID = " + projectID);
+    }
+    else //interne Datenbank ist default
+    {
+	    stmt.executeUpdate("UPDATE "
+	        + Config.getInstance().get(CONFIG_TABLE_PREFIX, DEFAULT_PREFIX)
+	        + "_project set " + "Description   = '" + desc + "', "
+	        + "DateEdit = '" + begin.toString() + "',"
+	        + "Deadline = '" + end.toString() + "'"
+	        + " where ProjectID = " + projectID);
+    }
     this.sync();
   }
   

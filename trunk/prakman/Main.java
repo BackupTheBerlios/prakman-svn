@@ -13,7 +13,7 @@ public class Main
   /**
    * Der Titel- und Versionstext des Programmes.
    */
-  public static final String VERSION = "PrakMan Version 2.0 (SVN)";
+  public static final String VERSION = "PrakMan Version 2.1 (SVN)";
 
   /**
    * Diese Testfunktion fuegt die gewuenschte Anzahl an
